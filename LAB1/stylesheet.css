@@ -1,0 +1,15 @@
+body{
+    padding: 3%;
+
+}
+h1{
+    color: rgb(255, 99, 132);
+    text-shadow: 1px 1px 1px black;
+}
+#myChart{
+border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 5px;
+
+}
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>NBA Players</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Basketball Players Heights">
+        <meta name="keywords" content="Basketball Players Heights">
+        <meta name="author" content="Nicholas Egner">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="players_local.js"></script>
+        <link rel="stylesheet" href="stylesheet.css" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    </head>
+    <body>
+
+        <!--Make sure the graph on the browser is fully expanded to see all players-->
+
+       <!--<div id="content"></div> --> 
+       <h1>25 NBA players Heights </h1>
+        <canvas id="myChart"></canvas>
+        <script>
+           // var contentDiv = document.getElementById("content");
+            var playerName = [];
+            var meters = [];
+            for(var i = 0; i < playersLocal.length; i++) {
+                var player = playersLocal[i];
+                playerName[i] = player.firstName + " " + player.lastName;
+                var jersey = "Jersey number:"+player.jersey;
+                var pos = player.pos;
+                meters[i] = player.heightMeters;
+                
+
+
+
+
+                /*var playerDiv = document.createElement("div");
+                playerDiv.innerHTML = playerName + " " + player.heightMeters+" "+jersey+" "+meters;
+
+                contentDiv.appendChild(playerDiv);
+
+               console.log(playerName+" "+meters); */
+            
+        
+
+
+            }
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: (function(){
+                        var arr = [];
+                        for(var x = 0; x < playerName.length; x++){
+                            arr.push(playerName[x]);
+                        }
+                        return arr;
+                    })("Players:"),
+                    datasets: [{
+                        label: "Height in meters",
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: (function(){
+                        var arr = [];
+                        for(var x = 0; x < meters.length; x++){
+                            arr.push(meters[x]);
+                        }
+                        return arr;
+                    })("Meters:"),
+                    }]
+                },
+                
+                // Configuration options go here
+                options: {}
+            });
+        </script>  
+    </body>
+</html>
